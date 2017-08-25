@@ -3,15 +3,15 @@ package com.rico.action;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.rico.entity.Category;
 import com.rico.service.ClientCategoryService;
 
 import chok.devwork.BaseController;
 
-@Controller
+@RestController
 @RequestMapping("/client")
 public class TestAction  extends BaseController<Category>
 {
@@ -19,9 +19,9 @@ public class TestAction  extends BaseController<Category>
 	private ClientCategoryService service;
 
 	@RequestMapping("/query")
-	public void query()
+	public List query()
 	{
 		List list = service.query();
-		printJson(list);
+		return list;
 	}
 }

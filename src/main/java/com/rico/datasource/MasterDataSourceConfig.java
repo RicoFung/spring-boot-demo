@@ -43,7 +43,8 @@ public class MasterDataSourceConfig
  
     @Bean(name = "masterDataSource")
     @Primary
-    public DataSource masterDataSource() {
+    public DataSource masterDataSource() 
+    {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driverClass);
         dataSource.setUrl(url);
@@ -59,18 +60,18 @@ public class MasterDataSourceConfig
  
     @Bean(name = "masterTransactionManager")
     @Primary
-    public DataSourceTransactionManager masterTransactionManager() {
+    public DataSourceTransactionManager masterTransactionManager() 
+    {
         return new DataSourceTransactionManager(masterDataSource());
     }
  
     @Bean(name = "masterSqlSessionFactory")
     @Primary
-    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource)
-            throws Exception {
+    public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource masterDataSource) throws Exception 
+    {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(masterDataSource);
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources(MasterDataSourceConfig.MAPPER_LOCATION));
+        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MasterDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
 

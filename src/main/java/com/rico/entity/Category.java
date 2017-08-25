@@ -6,22 +6,28 @@ public class Category
 	private String name;
 	private int sort;
 
-	public Long getId() {
+	public Long getId() 
+	{
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Long id) 
+	{
 		this.id = id;
 	}
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
-	public int getSort() {
+	public int getSort() 
+	{
 		return sort;
 	}
-	public void setSort(int sort) {
+	public void setSort(int sort) 
+	{
 		this.sort = sort;
 	}	
 }
