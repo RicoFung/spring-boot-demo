@@ -8,14 +8,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClientCategoryDao
+public class UserDao
 {
-	@Resource(name = "firstSqlSessionTemplate")
+	@Resource(name = "secondSqlSessionTemplate")
 	private SqlSession sqlSession;
 	
 	public List query()
 	{
-		return this.sqlSession.selectList("com.rico.entity.Category.query");
+		return this.sqlSession.selectList("com.rico.entity2.User.query");
 	}
 
 }
