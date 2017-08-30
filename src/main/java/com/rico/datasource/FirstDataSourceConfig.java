@@ -54,12 +54,14 @@ public class FirstDataSourceConfig
     }
  
     @Bean(name = "firstTransactionManager")
+    @Primary
     public DataSourceTransactionManager firstTransactionManager() 
     {
         return new DataSourceTransactionManager(firstDataSource());
     }
  
     @Bean(name = "firstSqlSessionFactory")
+    @Primary
     public SqlSessionFactory firstSqlSessionFactory(@Qualifier("firstDataSource") DataSource firstDataSource) throws Exception 
     {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();

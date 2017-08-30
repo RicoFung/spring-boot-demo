@@ -16,6 +16,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 @Configuration
 public class SecondDataSourceConfig 
 {
+	@Value("${second.datasource.mapper-location}")
+    private String mapperLocation;
     @Value("${second.datasource.url}")
     private String url;
     @Value("${second.datasource.username}")
@@ -32,8 +34,6 @@ public class SecondDataSourceConfig
     private int minIdle;
     @Value("${second.datasource.maxWait}")
     private int maxWait;
-    @Value("${second.datasource.mapper-location}")
-    private String mapperLocation;
  
     @Bean(name = "secondDataSource")
     public DataSource secondDataSource() 
@@ -62,7 +62,7 @@ public class SecondDataSourceConfig
     {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(secondDataSource);
-        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocation));
+		sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocation));
         return sessionFactory.getObject();
     }
 
