@@ -6,15 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rico.entity.Category;
 import com.rico.service.ClientCategoryService;
 import com.rico.service.UserService;
 
-import chok.devwork.BaseController;
-
 @RestController
 @RequestMapping("/client")
-public class TestAction  extends BaseController<Category>
+public class TestAction
 {
 	@Autowired
 	private ClientCategoryService service;
@@ -24,14 +21,14 @@ public class TestAction  extends BaseController<Category>
 	@RequestMapping("/query")
 	public List query()
 	{
-		List list = service.query();
+		List list = service.query(null);
 		return list;
 	}
 	
 	@RequestMapping("/queryUser")
 	public List queryUser()
 	{
-		List list = userService.query();
+		List list = userService.query(null);
 		return list;
 	}
 }
