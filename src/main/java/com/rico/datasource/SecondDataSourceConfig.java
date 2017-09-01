@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.xa.DruidXADataSource;
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 
 @Configuration
 public class SecondDataSourceConfig 
@@ -38,7 +38,7 @@ public class SecondDataSourceConfig
     @Bean(name = "secondDataSource")
     public DataSource secondDataSource() 
     {
-        DruidDataSource dataSource = new DruidDataSource();
+        DruidXADataSource dataSource = new DruidXADataSource();
         dataSource.setDriverClassName(driverClass);
         dataSource.setUrl(url);
         dataSource.setUsername(user);
@@ -48,14 +48,19 @@ public class SecondDataSourceConfig
         dataSource.setMaxActive(maxActive);
         dataSource.setMinIdle(minIdle);
         dataSource.setMaxWait(maxWait);
-        return dataSource;
+        
+        AtomikosDataSourceBean adsBean = new AtomikosDataSourceBean();
+        adsBean.setXaDataSource(dataSource);
+        adsBean.setUniqueResourceName("ds2");
+        return adsBean;
     }
- 
-    @Bean(name = "secondTransactionManager")
-    public DataSourceTransactionManager secondTransactionManager() 
-    {
-        return new DataSourceTransactionManager(secondDataSource());
-    }
+
+//	  打开后，分布式事务JTA失效
+//    @Bean(name = "secondTransactionManager")
+//    public DataSourceTransactionManager secondTransactionManager() 
+//    {
+//        return new DataSourceTransactionManager(secondDataSource());
+//    }
  
     @Bean(name = "secondSqlSessionFactory")
     public SqlSessionFactory secondSqlSessionFactory(@Qualifier("secondDataSource") DataSource secondDataSource) throws Exception 

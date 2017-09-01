@@ -19,6 +19,9 @@
 		<dependency><groupId>org.mybatis.spring.boot</groupId><artifactId>mybatis-spring-boot-starter</artifactId><version>${mybatis.spring.boot.version}</version></dependency>
 		<!-- spring-boot druid -->
 		<dependency><groupId>com.alibaba</groupId><artifactId>druid-spring-boot-starter</artifactId><version>${druid.spring.boot.version}</version></dependency>
+		<!-- spring-boot atomikos 分布式事务 -->
+		<dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-jta-atomikos</artifactId><version>${spring.boot.version}</version></dependency>
+	    <dependency><groupId>com.atomikos</groupId><artifactId>transactions-osgi</artifactId><version>3.9.3</version></dependency>
 		<!-- myql 依赖包 -->
 		<dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><version>5.1.40</version></dependency>
 		<!-- 其他工具包 -->

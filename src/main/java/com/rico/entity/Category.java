@@ -4,8 +4,12 @@ public class Category
 {
 	private Long id;
 	private String name;
-	private int sort;
+	private String sort;
 
+	public void setSort(String sort)
+	{
+		this.sort = sort;
+	}
 	public Long getId() 
 	{
 		return id;
@@ -22,12 +26,4 @@ public class Category
 	{
 		this.name = name;
 	}
-	public int getSort() 
-	{
-		return sort;
-	}
-	public void setSort(int sort) 
-	{
-		this.sort = sort;
-	}	
 }

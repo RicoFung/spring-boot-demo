@@ -31,4 +31,10 @@ public class TestAction
 		List list = userService.query(null);
 		return list;
 	}
+	
+	@RequestMapping("/addDone")
+	public void addDone()
+	{
+		service.addDone();
+	}
 }

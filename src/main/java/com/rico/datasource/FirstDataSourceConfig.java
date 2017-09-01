@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.xa.DruidXADataSource;
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 
 @Configuration
 public class FirstDataSourceConfig 
@@ -40,7 +40,7 @@ public class FirstDataSourceConfig
     @Primary
     public DataSource firstDataSource() 
     {
-        DruidDataSource dataSource = new DruidDataSource();
+        DruidXADataSource dataSource = new DruidXADataSource();
         dataSource.setDriverClassName(driverClass);
         dataSource.setUrl(url);
         dataSource.setUsername(user);
@@ -50,15 +50,20 @@ public class FirstDataSourceConfig
         dataSource.setMaxActive(maxActive);
         dataSource.setMinIdle(minIdle);
         dataSource.setMaxWait(maxWait);
-        return dataSource;
+        
+        AtomikosDataSourceBean adsBean = new AtomikosDataSourceBean();
+        adsBean.setXaDataSource(dataSource);
+        adsBean.setUniqueResourceName("ds1");
+        return adsBean;
     }
- 
-    @Bean(name = "firstTransactionManager")
-    @Primary
-    public DataSourceTransactionManager firstTransactionManager() 
-    {
-        return new DataSourceTransactionManager(firstDataSource());
-    }
+
+//	  打开后，分布式事务JTA失效
+//    @Bean(name = "firstTransactionManager")
+//    @Primary
+//    public DataSourceTransactionManager firstTransactionManager() 
+//    {
+//        return new DataSourceTransactionManager(firstDataSource());
+//    }
  
     @Bean(name = "firstSqlSessionFactory")
     @Primary
