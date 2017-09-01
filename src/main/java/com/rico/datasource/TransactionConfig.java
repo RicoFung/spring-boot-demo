@@ -9,6 +9,7 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
@@ -19,6 +20,7 @@ import com.atomikos.icatch.jta.UserTransactionManager;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource(value = "classpath:config/transactions.properties", ignoreResourceNotFound = true)
 public class TransactionConfig
 {
 	@Bean(name = "userTransaction")

@@ -9,14 +9,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 
 @Configuration
+@PropertySource(value = "classpath:config/datasource.properties", ignoreResourceNotFound = true)
 public class FirstDataSourceConfig 
 {
+    @Value("${first.datasource.unique-resource-name}")
+    private String uniqueResourceName;
     @Value("${first.datasource.url}")
     private String url;
     @Value("${first.datasource.username}")
@@ -35,6 +40,8 @@ public class FirstDataSourceConfig
     private int maxWait;
     @Value("${first.datasource.mapper-location}")
     private String mapperLocation;
+    @Value("${mybatis.config-location}")
+    private String mybatisConfigLocation;
  
     @Bean(name = "firstDataSource")
     @Primary
@@ -53,7 +60,7 @@ public class FirstDataSourceConfig
         
         AtomikosDataSourceBean adsBean = new AtomikosDataSourceBean();
         adsBean.setXaDataSource(dataSource);
-        adsBean.setUniqueResourceName("ds1");
+        adsBean.setUniqueResourceName(uniqueResourceName);
         return adsBean;
     }
 
@@ -72,6 +79,7 @@ public class FirstDataSourceConfig
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(firstDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(mapperLocation));
+        sessionFactory.setConfigLocation(new DefaultResourceLoader().getResource(mybatisConfigLocation));
         return sessionFactory.getObject();
     }
 
