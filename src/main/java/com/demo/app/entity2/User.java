@@ -1,4 +1,4 @@
-package com.rico.entity2;
+package com.demo.app.entity2;
 
 import chok.devwork.BaseModel;
 

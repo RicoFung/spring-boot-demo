@@ -1,11 +1,11 @@
-package com.rico.dao;
+package com.demo.app.dao;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.rico.entity.Category;
+import com.demo.app.entity.Category;
 
 import chok.devwork.springboot.BaseDao;
 

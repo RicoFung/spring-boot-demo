@@ -1,4 +1,4 @@
-package com.rico.entity;
+package com.demo.app.entity;
 
 public class Category 
 {
@@ -13,6 +13,10 @@ public class Category
 	public Long getId() 
 	{
 		return id;
+	}
+	public String getSort()
+	{
+		return sort;
 	}
 	public void setId(Long id) 
 	{

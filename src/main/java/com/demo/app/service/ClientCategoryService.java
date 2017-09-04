@@ -1,12 +1,12 @@
-package com.rico.service;
+package com.demo.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rico.dao.ClientCategoryDao;
-import com.rico.dao.UserDao;
-import com.rico.entity.Category;
-import com.rico.entity2.User;
+import com.demo.app.dao.ClientCategoryDao;
+import com.demo.app.dao.UserDao;
+import com.demo.app.entity.Category;
+import com.demo.app.entity2.User;
 
 import chok.devwork.springboot.BaseDao;
 import chok.devwork.springboot.BaseService;

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
   
-<mapper namespace="com.rico.entity.Category">
+<mapper namespace="com.demo.app.entity.Category">
       <!-- 自动生成id策略 -->
-    <insert id="add" parameterType="com.rico.entity.Category" useGeneratedKeys="true" keyProperty="id">  
+    <insert id="add" parameterType="com.demo.app.entity.Category" useGeneratedKeys="true" keyProperty="id">  
        	insert into tb_category(name,sort) values (#{name},#{sort})  
     </insert>  
 	
-	<delete id="del" parameterType="com.rico.entity.Category">
+	<delete id="del" parameterType="com.demo.app.entity.Category">
 		delete from tb_category where id = #{id}
 	</delete>
 	
-	<update id="upd" parameterType="com.rico.entity.Category">
+	<update id="upd" parameterType="com.demo.app.entity.Category">
 		update tb_category set
 		  name = #{name},
 		  sort = #{sort}
 		where id = #{id}
 	</update>
   	
-	<resultMap type="com.rico.entity.Category" id="result">
+	<resultMap type="com.demo.app.entity.Category" id="result">
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="sort" column="sort"/>

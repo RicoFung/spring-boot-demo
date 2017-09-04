@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   
   
-<mapper namespace="com.rico.entity2.User">
+<mapper namespace="com.demo.app.entity2.User">
       <!-- 自动生成id策略 -->
-    <insert id="add" parameterType="com.rico.entity2.User" useGeneratedKeys="true" keyProperty="id">  
+    <insert id="add" parameterType="com.demo.app.entity2.User" useGeneratedKeys="true" keyProperty="id">  
        	insert into tb_user(tc_code, tc_name, tc_email, tc_password, tc_add_time) values (#{m.tc_code}, #{m.tc_name}, #{m.tc_email}, #{m.tc_password}, date_format(now(),'%Y-%c-%d %h:%i:%s'))  
     </insert>  
 	
-	<delete id="del" parameterType="com.rico.entity2.User">
+	<delete id="del" parameterType="com.demo.app.entity2.User">
 		delete from tb_user where id = #{id}
 	</delete>
 	
-	<update id="upd" parameterType="com.rico.entity2.User">
+	<update id="upd" parameterType="com.demo.app.entity2.User">
 		update tb_user set
 		  	   tc_code = #{m.tc_code},
 		  	   tc_name = #{m.tc_name},
@@ -19,7 +19,7 @@
 		 where id = #{m.id}
 	</update>
   	
-	<resultMap type="com.rico.entity2.User" id="result">
+	<resultMap type="com.demo.app.entity2.User" id="result">
 		<id property="m.id" column="id"/>
 		<result property="m.tc_code" column="tc_code"/>
 		<result property="m.tc_name" column="tc_name"/>

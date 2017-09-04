@@ -1,4 +1,4 @@
-package com.rico.datasource;
+package com.demo.datasource;
 
 import java.util.Properties;
 

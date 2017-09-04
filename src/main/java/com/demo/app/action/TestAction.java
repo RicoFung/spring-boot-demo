@@ -1,4 +1,4 @@
-package com.rico.action;
+package com.demo.app.action;
 
 import java.util.List;
 import java.util.Map;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rico.entity.Category;
-import com.rico.service.ClientCategoryService;
-import com.rico.service.UserService;
+import com.demo.app.entity.Category;
+import com.demo.app.service.ClientCategoryService;
+import com.demo.app.service.UserService;
 
 import chok.devwork.BaseController;
 
