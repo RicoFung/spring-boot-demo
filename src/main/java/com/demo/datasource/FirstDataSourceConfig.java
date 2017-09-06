@@ -17,7 +17,7 @@ import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
 
 @Configuration
-@PropertySource(value = "classpath:config/datasource.properties", ignoreResourceNotFound = true)
+@PropertySource(value = "classpath:datasource.properties", ignoreResourceNotFound = true)
 public class FirstDataSourceConfig 
 {
     @Value("${first.datasource.unique-resource-name}")

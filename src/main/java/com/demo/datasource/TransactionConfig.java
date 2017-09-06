@@ -20,7 +20,7 @@ import com.atomikos.icatch.jta.UserTransactionManager;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = "classpath:config/transactions.properties", ignoreResourceNotFound = true)
+//@PropertySource(value = "classpath:config/transactions.properties", ignoreResourceNotFound = true)
 public class TransactionConfig
 {
 	@Bean(name = "userTransaction")

@@ -11,7 +11,7 @@ import chok.sso.filter.LoginFilter;
 import chok.sso.filter.LogoutFilter;
 import chok.sso.filter.PasswordFilter;
 
-@Configuration
+//@Configuration
 public class SsoConfig
 {
 	@Bean

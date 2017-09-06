@@ -16,7 +16,7 @@ import chok.cas.client.filter.CasAccessFilter;
 import chok.cas.client.filter.CasLogoutFilter;
 import chok.cas.client.filter.CasPasswordFilter;
 
-//@Configuration
+@Configuration
 public class CasConfig
 {
 	@Bean
